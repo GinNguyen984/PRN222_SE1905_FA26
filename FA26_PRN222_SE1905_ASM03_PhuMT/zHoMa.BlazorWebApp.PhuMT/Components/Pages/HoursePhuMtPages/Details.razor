@@ -1,0 +1,187 @@
+@page "/hoursephumts/details"
+@rendermode InteractiveServer
+@using zHoMa.Entities.PhuMT.Models
+@using zHoMa.Services.PhuMT.Interface
+
+@inject IHoursePhuMtService HoursePhuMtService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details @(hoursephumt?.Name ?? "Horse") - RTMS PhuMT</PageTitle>
+
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="" class="text-decoration-none">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="hoursephumts" class="text-decoration-none">Horse Management</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@(hoursephumt?.Name ?? "Horse") Details</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            @if (isLoading)
+            {
+                <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+                    <div class="spinner-border text-primary mx-auto mb-3" role="status"></div>
+                    <h5 class="fw-bold text-dark">Loading horse profile...</h5>
+                </div>
+            }
+            else if (hoursephumt is null)
+            {
+                <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+                    <div class="fs-1 text-danger mb-3">⚠️</div>
+                    <h5 class="fw-bold text-dark">Horse Record Not Found</h5>
+                    <p class="text-muted small mb-3">No record found with ID #@HoursePhuMtid.</p>
+                    <a href="hoursephumts" class="btn btn-primary rounded-pill px-4">Back to Registry</a>
+                </div>
+            }
+            else
+            {
+                var isActive = hoursephumt.IsActive == true;
+                var initial = !string.IsNullOrWhiteSpace(hoursephumt.Name) ? hoursephumt.Name.Substring(0, 1).ToUpper() : "H";
+                var age = hoursephumt.DateOfBirth.HasValue
+                    ? (DateTime.Now.Year - hoursephumt.DateOfBirth.Value.Year)
+                    : 0;
+
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                    <!-- Header Banner -->
+                    <div class="p-4 p-md-5 text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+                        <div class="d-flex flex-column flex-sm-row align-items-center gap-4 text-center text-sm-start">
+                            <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center shadow" style="width: 80px; height: 80px; font-size: 2.5rem; font-weight: 800;">
+                                @initial
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start gap-2 mb-1">
+                                    <h2 class="fw-bold mb-0 text-white">@hoursephumt.Name</h2>
+                                    <span class="badge bg-white bg-opacity-25 text-white border border-white border-opacity-25 font-monospace">
+                                        #@hoursephumt.HoursePhuMtid.ToString("D2")
+                                    </span>
+                                </div>
+                                <p class="text-white-50 mb-2">
+                                    <i class="bi bi-diagram-3 me-1"></i>@(string.IsNullOrWhiteSpace(hoursephumt.Pedigree) ? "Unspecified bloodline" : hoursephumt.Pedigree)
+                                </p>
+                                <div>
+                                    @if (isActive)
+                                    {
+                                        <span class="badge bg-success text-white px-3 py-1 rounded-pill">
+                                            <i class="bi bi-check-circle-fill me-1"></i> Active for Racing
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary text-white px-3 py-1 rounded-pill">
+                                            <i class="bi bi-pause-circle-fill me-1"></i> Inactive / Medical Leave
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Body -->
+                    <div class="p-4 p-md-5">
+                        <div class="row g-4 mb-4">
+                            <!-- Pedigree -->
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase fw-semibold mb-1">
+                                        <i class="bi bi-diagram-3 me-1 text-primary"></i> Pedigree & Bloodline
+                                    </div>
+                                    <div class="fs-5 fw-bold text-dark">
+                                        @(string.IsNullOrWhiteSpace(hoursephumt.Pedigree) ? "Not Recorded" : hoursephumt.Pedigree)
+                                    </div>
+                                    <small class="text-muted">Lineage registration status</small>
+                                </div>
+                            </div>
+
+                            <!-- Weight -->
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase fw-semibold mb-1">
+                                        <i class="bi bi-speedometer2 me-1 text-primary"></i> Current Weight
+                                    </div>
+                                    <div class="fs-5 fw-bold text-dark">
+                                        @(hoursephumt.Weight.HasValue ? $"{hoursephumt.Weight.Value:N2} kg" : "Not measured")
+                                    </div>
+                                    <small class="text-muted">Physical racing condition benchmark</small>
+                                </div>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase fw-semibold mb-1">
+                                        <i class="bi bi-calendar-event me-1 text-primary"></i> Date of Birth & Age
+                                    </div>
+                                    <div class="fs-5 fw-bold text-dark">
+                                        @(hoursephumt.DateOfBirth.HasValue ? hoursephumt.DateOfBirth.Value.ToString("dd MMMM yyyy") : "Unknown")
+                                    </div>
+                                    <small class="text-muted">@(age > 0 ? $"{age} years old" : "Birthdate recorded")</small>
+                                </div>
+                            </div>
+
+                            <!-- Competition Status -->
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-light rounded-3 border h-100">
+                                    <div class="text-muted small text-uppercase fw-semibold mb-1">
+                                        <i class="bi bi-trophy me-1 text-primary"></i> Racing Status
+                                    </div>
+                                    <div class="fs-5 fw-bold text-dark">
+                                        @(isActive ? "Active Contender" : "Non-competing")
+                                    </div>
+                                    <small class="text-muted">Track tournament clearance</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-3 border-top">
+                            <a href="hoursephumts" class="btn btn-light px-4 py-2 rounded-pill fw-semibold border d-inline-flex align-items-center gap-2">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Back to Registry</span>
+                            </a>
+                            <div class="d-flex align-items-center gap-2">
+                                <a href="@($"hoursephumts/delete?hoursephumtid={hoursephumt.HoursePhuMtid}")" class="btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
+                                    <i class="bi bi-trash3"></i>
+                                    <span>Delete</span>
+                                </a>
+                                <a href="@($"hoursephumts/edit?hoursephumtid={hoursephumt.HoursePhuMtid}")" class="btn btn-primary-gradient px-4 py-2 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
+                                    <i class="bi bi-pencil-square"></i>
+                                    <span>Edit Horse</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int HoursePhuMtid { get; set; }
+
+    private HoursePhuMt? hoursephumt;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        try
+        {
+            hoursephumt = await HoursePhuMtService.GetByIdAsync(HoursePhuMtid);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

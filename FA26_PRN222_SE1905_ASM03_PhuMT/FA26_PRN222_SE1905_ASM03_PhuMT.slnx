@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="zHoMa.BlazorWebApp.PhuMT/zHoMa.BlazorWebApp.PhuMT.csproj" Id="34cb85ff-f256-4640-af42-f151d62d783b" />
+  <Project Path="zHoMa.Entities.PhuMT/zHoMa.Entities.PhuMT.csproj" />
+  <Project Path="zHoMa.Repositories.PhuMT/zHoMa.Repositories.PhuMT.csproj" />
+  <Project Path="zHoMa.Services.PhuMT/zHoMa.Services.PhuMT.csproj" />
+</Solution>

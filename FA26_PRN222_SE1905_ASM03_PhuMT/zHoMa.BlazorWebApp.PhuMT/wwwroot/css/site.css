@@ -1,0 +1,363 @@
+/* ========================================================
+   GLOBAL TYPOGRAPHY & RESET
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+html {
+    font-size: 15px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+body {
+    margin: 0;
+    padding-bottom: 60px;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================================
+   THEME 1: MODERN SLATE MESH (DEFAULT)
+   ======================================================== */
+body, body[data-theme="slate"], html[data-theme="slate"] body {
+    background-color: #f1f5f9;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.09) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(148, 163, 184, 0.15) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: #1e293b;
+}
+
+/* ========================================================
+   THEME 2: EMERALD TURF (EQUESTRIAN RACE TRACK)
+   ======================================================== */
+body[data-theme="turf"], html[data-theme="turf"] body {
+    background-color: #f0fdf4;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(5, 150, 105, 0.10) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(110, 231, 183, 0.18) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: #064e3b;
+}
+
+/* ========================================================
+   THEME 3: ROYAL PURPLE / INDIGO LUXURY
+   ======================================================== */
+body[data-theme="royal"], html[data-theme="royal"] body {
+    background-color: #f5f3ff;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(196, 181, 253, 0.20) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: #2e1065;
+}
+
+/* ========================================================
+   THEME 4: MIDNIGHT CYBER DARK MODE
+   ======================================================== */
+body[data-theme="midnight"], html[data-theme="midnight"] body {
+    background-color: #0b0f19;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.25) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.7) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: #e2e8f0;
+}
+
+body[data-theme="midnight"] .navbar {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.7) !important;
+}
+
+body[data-theme="midnight"] .navbar-brand,
+body[data-theme="midnight"] .nav-link {
+    color: #f1f5f9 !important;
+}
+
+body[data-theme="midnight"] .card,
+body[data-theme="midnight"] .table-card,
+body[data-theme="midnight"] .metric-card,
+body[data-theme="midnight"] .form-card {
+    background-color: #131b2e !important;
+    border: 1px solid #1e293b !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+body[data-theme="midnight"] .custom-table thead th {
+    background-color: #1a2236 !important;
+    color: #94a3b8 !important;
+    border-color: #26334d !important;
+}
+
+body[data-theme="midnight"] .custom-table tbody tr {
+    border-color: #1e293b !important;
+}
+
+body[data-theme="midnight"] .custom-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+body[data-theme="midnight"] .custom-table td,
+body[data-theme="midnight"] h2,
+body[data-theme="midnight"] h3,
+body[data-theme="midnight"] h4,
+body[data-theme="midnight"] h5,
+body[data-theme="midnight"] .text-dark {
+    color: #f8fafc !important;
+}
+
+body[data-theme="midnight"] .bg-white {
+    background-color: #131b2e !important;
+}
+
+body[data-theme="midnight"] .bg-light {
+    background-color: #1a2236 !important;
+    color: #cbd5e1 !important;
+}
+
+body[data-theme="midnight"] .input-group-text,
+body[data-theme="midnight"] .form-control,
+body[data-theme="midnight"] .form-select {
+    background-color: #1a2236 !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body[data-theme="midnight"] .footer {
+    background-color: #0b0f19 !important;
+    border-color: #1e293b !important;
+    color: #64748b !important;
+}
+
+body[data-theme="midnight"] .status-box {
+    background-color: #1a2236 !important;
+    border-color: #334155 !important;
+}
+
+/* ========================================================
+   MODERN NAVBAR & FOOTER
+   ======================================================== */
+.modern-navbar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand-badge {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    letter-spacing: 0.04em;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #475569;
+    padding: 0.5rem 0.9rem !important;
+    border-radius: 0.5rem;
+    transition: all 0.15s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #2563eb !important;
+    background-color: rgba(37, 99, 235, 0.08);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(226, 232, 240, 0.75);
+    z-index: 100;
+}
+
+/* Button & Focus Ring Enhancements */
+.btn:focus, .btn:active:focus, .form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+/* Metric Cards */
+.metric-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.metric-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* Table Container */
+.table-card {
+    border: none;
+    border-radius: 1.25rem;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.custom-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.custom-table thead th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.custom-table tbody tr {
+    transition: background-color 0.15s ease-in-out;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.custom-table td {
+    padding: 1.1rem 1.25rem;
+    color: #334155;
+}
+
+/* Avatar Badge */
+.horse-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    color: #3730a3;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Action Buttons */
+.btn-action {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    transition: all 0.15s ease;
+}
+
+.btn-action:hover {
+    transform: scale(1.08);
+}
+
+.btn-primary-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-primary-gradient:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+    color: #ffffff;
+}
+
+.search-input-group .input-group-text {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    color: #64748b;
+}
+
+.status-pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.status-pulse.active {
+    background-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+.status-pulse.inactive {
+    background-color: #94a3b8;
+}
+
+/* Form Styles */
+.form-card {
+    border: none;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.form-card-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 1.75rem 2rem;
+}
+
+.form-section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+}

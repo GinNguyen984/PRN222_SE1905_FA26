@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RTMS Horse Track</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Site Styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/zHoMa.RazorWebApp.PhuMT.styles.css" asp-append-version="true" />
+
+    <!-- Early theme initialization to avoid flash of wrong background -->
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('rtms-theme') || 'slate';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body data-theme="slate">
+    <header>
+        <nav class="navbar navbar-expand-lg modern-navbar sticky-top mb-4">
+            <div class="container-fluid px-lg-4">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark text-decoration-none" asp-area="" asp-page="/Index">
+                    <span class="fs-4">🏇</span>
+                    <span>RTMS Track</span>
+                    <span class="navbar-brand-badge">PhuMT</span>
+                </a>
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Index">
+                                <i class="bi bi-house-door me-1"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/HoursePhuMts/Index">
+                                <i class="bi bi-trophy me-1"></i> Horse Management
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/Privacy">
+                                <i class="bi bi-shield-check me-1"></i> Privacy
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Right Controls: Theme Selector Dropdown -->
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle rounded-pill px-3 py-1 d-flex align-items-center gap-2" type="button" id="themeDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-palette2"></i>
+                                <span id="currentThemeLabel">Theme</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 mt-2" aria-labelledby="themeDropdownBtn">
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 py-2" type="button" onclick="setAppTheme('slate')">
+                                        <span class="badge rounded-circle p-1" style="background-color: #3b82f6;">&nbsp;</span>
+                                        <span>💎 Modern Slate (Default)</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 py-2" type="button" onclick="setAppTheme('turf')">
+                                        <span class="badge rounded-circle p-1" style="background-color: #10b981;">&nbsp;</span>
+                                        <span>🌿 Emerald Turf (Equestrian)</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 py-2" type="button" onclick="setAppTheme('royal')">
+                                        <span class="badge rounded-circle p-1" style="background-color: #8b5cf6;">&nbsp;</span>
+                                        <span>👑 Royal Purple</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 py-2" type="button" onclick="setAppTheme('midnight')">
+                                        <span class="badge rounded-circle p-1" style="background-color: #0f172a;">&nbsp;</span>
+                                        <span>🌙 Midnight Cyber (Dark)</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid px-lg-4">
+        <main role="main" class="pb-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container-fluid px-lg-4 d-flex align-items-center justify-content-between small">
+            <span>&copy; 2026 - <strong>RTMS Track System</strong> &bull; Developed by PhuMT</span>
+            <a asp-area="" asp-page="/Privacy" class="text-decoration-none text-muted">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        function setAppTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('rtms-theme', theme);
+
+            const labels = {
+                'slate': '💎 Slate',
+                'turf': '🌿 Turf',
+                'royal': '👑 Royal',
+                'midnight': '🌙 Dark'
+            };
+            const labelEl = document.getElementById('currentThemeLabel');
+            if (labelEl && labels[theme]) {
+                labelEl.textContent = labels[theme];
+            }
+        }
+
+        // Apply on DOM load
+        document.addEventListener('DOMContentLoaded', function () {
+            var theme = localStorage.getItem('rtms-theme') || 'slate';
+            setAppTheme(theme);
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

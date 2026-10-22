@@ -152,19 +152,24 @@
         </div>
     </div>
 </div>
-<script src="~lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/signalr/dist/browser/signalr.js"></script>
-<script>
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/RTMSHub")
-        .build();
-    connection.start().catch(err => console.error(err.toString()));
+@section Scripts {
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/RTMSHub")
+            .withAutomaticReconnect()
+            .build();
 
-    connection.on("Receiver_Delete", function (id) {
-        // Remove the horse details view if the deleted horse matches the current model
-        const currentHorseId = @Model?.HoursePhuMtid;
-        if (currentHorseId === id) {
-            window.location.href = '@Url.Action("Index", "HoursePhuMts")';
-        }
-    });
-</script>
+        connection.on("Receiver_Delete", function (id) {
+            const currentHorseId = '@Model?.HoursePhuMtid';
+            if (currentHorseId && parseInt(currentHorseId) === parseInt(id)) {
+                alert("This horse record has just been removed by an administrator.");
+                window.location.href = '@Url.Action("Index", "HoursePhuMts")';
+            }
+        });
+
+        connection.start()
+            .then(() => console.log("Details connected to /RTMSHub"))
+            .catch(err => console.error("SignalR Connection Error: ", err.toString()));
+    </script>
+}

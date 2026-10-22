@@ -1,0 +1,158 @@
+@page
+@model zHoMa.RazorWebApp.PhuMT.Pages_HoursePhuMts.DetailsModel
+
+@{
+    ViewData["Title"] = $"{Model.HoursePhuMt?.Name ?? "Horse"} - Details";
+    var isActive = Model.HoursePhuMt?.IsActive == true;
+    var initial = !string.IsNullOrWhiteSpace(Model.HoursePhuMt?.Name) ? Model.HoursePhuMt.Name.Substring(0, 1).ToUpper() : "H";
+    var age = Model.HoursePhuMt?.DateOfBirth.HasValue == true
+        ? (DateTime.Now.Year - Model.HoursePhuMt.DateOfBirth.Value.Year)
+        : 0;
+}
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-page="/Index" class="text-decoration-none">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-page="./Index" class="text-decoration-none">Horse Management</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.HoursePhuMt?.Name Details</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                <!-- Header Banner -->
+                <div class="p-4 p-md-5 text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-4 text-center text-sm-start">
+                        <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center shadow" style="width: 80px; height: 80px; font-size: 2.5rem; font-weight: 800;">
+                            @initial
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start gap-2 mb-1">
+                                <h2 class="fw-bold mb-0 text-white">@Model.HoursePhuMt?.Name</h2>
+                                <span class="badge bg-white bg-opacity-25 text-white border border-white border-opacity-25 font-monospace">
+                                    #@Model.HoursePhuMt?.HoursePhuMtid.ToString("D2")
+                                </span>
+                            </div>
+                            <p class="text-white-50 mb-2">
+                                <i class="bi bi-diagram-3 me-1"></i>@(string.IsNullOrWhiteSpace(Model.HoursePhuMt?.Pedigree) ? "Unspecified bloodline" : Model.HoursePhuMt.Pedigree)
+                            </p>
+                            <div>
+                                @if (isActive)
+                                {
+                                    <span class="badge bg-success px-3 py-1 rounded-pill">
+                                        <i class="bi bi-check-circle-fill me-1"></i> Active (Racing & Training)
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary px-3 py-1 rounded-pill">
+                                        <i class="bi bi-pause-circle-fill me-1"></i> Inactive (Rest / Leave)
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Attributes Body -->
+                <div class="card-body p-4 p-md-5">
+                    <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-info-circle-fill text-primary"></i> Profile & Biological Attributes
+                    </h5>
+
+                    <div class="row g-3 mb-4">
+                        <!-- Weight Card -->
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <span class="small text-muted fw-semibold text-uppercase d-block mb-1">
+                                    <i class="bi bi-speedometer2 me-1"></i> Weight
+                                </span>
+                                <div class="fs-4 fw-bold text-dark">
+                                    @(Model.HoursePhuMt?.Weight.HasValue == true ? Model.HoursePhuMt.Weight.Value.ToString("N2") : "--")
+                                    <span class="fs-6 fw-normal text-muted">kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date of Birth Card -->
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <span class="small text-muted fw-semibold text-uppercase d-block mb-1">
+                                    <i class="bi bi-calendar3 me-1"></i> Date of Birth
+                                </span>
+                                <div class="fs-4 fw-bold text-dark">
+                                    @(Model.HoursePhuMt?.DateOfBirth.HasValue == true ? Model.HoursePhuMt.DateOfBirth.Value.ToString("dd MMM yyyy") : "--")
+                                    @if (age > 0)
+                                    {
+                                        <span class="fs-6 fw-normal text-muted">(@age yrs old)</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bloodline / Pedigree -->
+                        <div class="col-12">
+                            <div class="p-3 bg-light rounded-3 border">
+                                <span class="small text-muted fw-semibold text-uppercase d-block mb-1">
+                                    <i class="bi bi-diagram-3-fill me-1"></i> Pedigree / Lineage
+                                </span>
+                                <div class="fs-5 fw-semibold text-dark">
+                                    @(string.IsNullOrWhiteSpace(Model.HoursePhuMt?.Pedigree) ? "None specified" : Model.HoursePhuMt.Pedigree)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Associated Stable Info if available -->
+                    @if (Model.HoursePhuMt?.StablePhuMts != null && Model.HoursePhuMt.StablePhuMts.Any())
+                    {
+                        <h5 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2 mt-4">
+                            <i class="bi bi-house-door-fill text-success"></i> Stable Allocations (@Model.HoursePhuMt.StablePhuMts.Count)
+                        </h5>
+                        <div class="list-group mb-4">
+                            @foreach (var stable in Model.HoursePhuMt.StablePhuMts)
+                            {
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+                                    <div>
+                                        <div class="fw-bold text-dark">@stable.StableCode &bull; @stable.Location</div>
+                                        <small class="text-muted">Task: @stable.TaskType &bull; Date: @(stable.TaskDate?.ToString("dd/MM/yyyy") ?? "--")</small>
+                                    </div>
+                                    <span class="badge @(stable.IsDone == true ? "bg-success" : "bg-warning text-dark") rounded-pill">
+                                        @(stable.IsDone == true ? "Done" : "Pending")
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <!-- Actions Footer -->
+                    <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-4">
+                        <a asp-page="./Index" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold">
+                            <i class="bi bi-arrow-left me-1"></i> Back to Roster
+                        </a>
+                        <div class="d-flex gap-2">
+                            <a asp-page="./Delete" asp-route-id="@Model.HoursePhuMt?.HoursePhuMtid" class="btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold">
+                                <i class="bi bi-trash3 me-1"></i> Delete
+                            </a>
+                            <a asp-page="./Edit" asp-route-id="@Model.HoursePhuMt?.HoursePhuMtid" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm">
+                                <i class="bi bi-pencil-square me-1"></i> Edit Horse
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

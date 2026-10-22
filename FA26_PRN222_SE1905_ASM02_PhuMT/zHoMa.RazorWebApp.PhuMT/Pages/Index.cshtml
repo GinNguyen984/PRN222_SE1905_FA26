@@ -1,0 +1,31 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home - RTMS Portal";
+}
+
+<div class="row justify-content-center py-5">
+    <div class="col-lg-10 col-xl-8 text-center">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden p-5" style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px);">
+            <div class="mb-3">
+                <span class="fs-1 d-inline-block">🏇</span>
+            </div>
+            <h1 class="display-5 fw-bold text-dark mb-3">
+                Race Track Management System
+            </h1>
+            <p class="lead text-muted mb-4 mx-auto" style="max-width: 600px;">
+                Welcome to RTMS &bull; Comprehensive platform for managing race horses, training regimens, health records, stables, and tournament standings.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a asp-page="/HoursePhuMts/Index" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-trophy-fill"></i>
+                    <span>Open Horse Management</span>
+                </a>
+                <a asp-page="/HoursePhuMts/Create" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>Register Horse</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

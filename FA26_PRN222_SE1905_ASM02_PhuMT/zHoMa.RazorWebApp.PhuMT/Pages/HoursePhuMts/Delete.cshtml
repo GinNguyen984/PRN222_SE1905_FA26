@@ -1,0 +1,96 @@
+@page
+@model zHoMa.RazorWebApp.PhuMT.Pages_HoursePhuMts.DeleteModel
+
+@{
+    ViewData["Title"] = $"Delete {Model.HoursePhuMt?.Name ?? "Horse"}";
+}
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-page="/Index" class="text-decoration-none">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-page="./Index" class="text-decoration-none">Horse Management</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Delete Confirmation</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-xl-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                <!-- Warning Header -->
+                <div class="p-4 bg-danger text-white text-center">
+                    <div class="rounded-circle bg-white text-danger d-inline-flex align-items-center justify-content-center mb-2 shadow-sm" style="width: 60px; height: 60px; font-size: 1.8rem;">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <h4 class="fw-bold mb-1">Delete Horse Record</h4>
+                    <p class="mb-0 text-white-50 small">Are you sure you want to permanently remove this horse from the registry?</p>
+                </div>
+
+                <!-- Horse Profile Preview -->
+                <div class="card-body p-4 p-md-5">
+                    <div class="p-3 bg-light rounded-3 border mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-3 bg-white p-3 border text-center font-monospace" style="min-width: 60px;">
+                                <small class="text-muted d-block" style="font-size: 0.7rem;">ID</small>
+                                <span class="fw-bold fs-5 text-dark">#@Model.HoursePhuMt?.HoursePhuMtid.ToString("D2")</span>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-1 text-dark">@Model.HoursePhuMt?.Name</h4>
+                                <div class="text-muted small">
+                                    <i class="bi bi-diagram-3 me-1"></i>@(string.IsNullOrWhiteSpace(Model.HoursePhuMt?.Pedigree) ? "Unspecified bloodline" : Model.HoursePhuMt.Pedigree)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="list-group list-group-flush mb-4 small">
+                        <li class="list-group-item d-flex justify-content-between px-0 py-2">
+                            <span class="text-muted">Weight:</span>
+                            <span class="fw-bold text-dark">@(Model.HoursePhuMt?.Weight.HasValue == true ? Model.HoursePhuMt.Weight.Value.ToString("N2") + " kg" : "--")</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-2">
+                            <span class="text-muted">Date of Birth:</span>
+                            <span class="fw-bold text-dark">@(Model.HoursePhuMt?.DateOfBirth.HasValue == true ? Model.HoursePhuMt.DateOfBirth.Value.ToString("dd MMM yyyy") : "--")</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-2">
+                            <span class="text-muted">Status:</span>
+                            <span class="fw-bold @(Model.HoursePhuMt?.IsActive == true ? "text-success" : "text-secondary")">
+                                @(Model.HoursePhuMt?.IsActive == true ? "Active" : "Inactive")
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="alert alert-warning d-flex align-items-center gap-2 small rounded-3" role="alert">
+                        <i class="bi bi-info-circle-fill fs-5 text-warning flex-shrink-0"></i>
+                        <div>
+                            This action cannot be undone. Associated training plans or health logs may be affected.
+                        </div>
+                    </div>
+
+                    <!-- Confirmation Form -->
+                    <form method="post" id="deleteForm" class="mt-4 pt-3 border-top d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="HoursePhuMt.HoursePhuMtid" />
+
+                        <a asp-page="./Index" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold">
+                            <i class="bi bi-arrow-left me-1"></i> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm">
+                            <i class="bi bi-trash3-fill me-1"></i> Confirm Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

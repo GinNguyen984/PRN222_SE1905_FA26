@@ -1,46 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\",
+  "WorkspaceRootPath": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\views\\hoursephumts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\views\\hoursephumts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\views\\hoursephumts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\views\\hoursephumts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\views\\hoursephumts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{14AADF00-04BF-49EE-8E18-23464C344FFD}|xHoMa.Services.PhuMT\\zHoMa.Services.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\xhoma.services.phumt\\service\\hoursephumtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14AADF00-04BF-49EE-8E18-23464C344FFD}|xHoMa.Services.PhuMT\\zHoMa.Services.PhuMT.csproj|solutionrelative:xhoma.services.phumt\\service\\hoursephumtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\hub\\rtmshub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\hub\\rtmshub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3FCCA515-3639-8F86-8606-BF4048384A1C}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.repositories.phumt\\dbcontext\\rtmscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FCCA515-3639-8F86-8606-BF4048384A1C}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|solutionrelative:zhoma.repositories.phumt\\dbcontext\\rtmscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3371A720-B077-C473-D42F-C9D8D8936BD1}|zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.entities.phumt\\zhoma.entities.phumt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3371A720-B077-C473-D42F-C9D8D8936BD1}|zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj|solutionrelative:zhoma.entities.phumt\\zhoma.entities.phumt.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\hub\\rtmshub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\hub\\rtmshub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\controllers\\hoursephumtscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\controllers\\hoursephumtscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C1AF294-ADB4-CD21-1793-D764A04FFBB9}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.repositories.phumt\\systemuseraccountphumtrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C1AF294-ADB4-CD21-1793-D764A04FFBB9}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|solutionrelative:zhoma.repositories.phumt\\systemuseraccountphumtrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AEA688D6-D8BD-A500-15F3-7C3D10EB64DD}|xHoMa.Services.PhuMT\\zHoMa.Services.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\xhoma.services.phumt\\iservice\\isystemuseraccountphumtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AEA688D6-D8BD-A500-15F3-7C3D10EB64DD}|xHoMa.Services.PhuMT\\zHoMa.Services.PhuMT.csproj|solutionrelative:xhoma.services.phumt\\iservice\\isystemuseraccountphumtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C1AF294-ADB4-CD21-1793-D764A04FFBB9}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm01_phumt\\zhoma.repositories.phumt\\dbcontext\\rtmscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C1AF294-ADB4-CD21-1793-D764A04FFBB9}|zHoMa.Repositories.PhuMT\\zHoMa.Repositories.PhuMT.csproj|solutionrelative:zhoma.repositories.phumt\\dbcontext\\rtmscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|c:\\code\\fptu\\prn222_se1905_fa26\\fa26_prn222_se1905_asm01_phumt\\zhoma.mvcwebapp.phumt\\views\\hoursephumts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{31ABD0F1-A035-499D-9A6B-5A5B63E190A6}|zHoMa.MVCWebApp.PhuMT\\zHoMa.MVCWebApp.PhuMT.csproj|solutionrelative:zhoma.mvcwebapp.phumt\\views\\hoursephumts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +46,11 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Program.cs",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Program.cs",
               "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Program.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Program.cs",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Program.cs",
               "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Program.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -70,11 +62,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
               "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
               "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Index.cshtml",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAIwLMAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAO0CAAAAAAAAAAAAAP8CAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-09-29T08:45:53.815Z",
               "IsPinned": true,
@@ -82,109 +74,89 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "RTMSHub.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
               "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
               "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Hub\\RTMSHub.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAiwAgAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-06T08:18:27.959Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
-              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
-              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAJgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-06T08:27:23.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "SystemUserAccountPhuMTRepository.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\SystemUserAccountPhuMTRepository.cs",
-              "RelativeDocumentMoniker": "zHoMa.Repositories.PhuMT\\SystemUserAccountPhuMTRepository.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\SystemUserAccountPhuMTRepository.cs",
-              "RelativeToolTip": "zHoMa.Repositories.PhuMT\\SystemUserAccountPhuMTRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
+              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
+              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Views\\HoursePhuMts\\Delete.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAJgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-06T08:27:23.84Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HoursePhuMtService.cs",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\xHoMa.Services.PhuMT\\Service\\HoursePhuMtService.cs",
+              "RelativeDocumentMoniker": "xHoMa.Services.PhuMT\\Service\\HoursePhuMtService.cs",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\xHoMa.Services.PhuMT\\Service\\HoursePhuMtService.cs",
+              "RelativeToolTip": "xHoMa.Services.PhuMT\\Service\\HoursePhuMtService.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T04:50:57.812Z",
+              "WhenOpened": "2026-10-22T14:15:26.297Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\appsettings.json",
+              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\appsettings.json",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\appsettings.json",
+              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-22T14:13:49.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RTMSContext.cs",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
+              "RelativeDocumentMoniker": "zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
+              "RelativeToolTip": "zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T05:18:27.573Z",
+              "WhenOpened": "2026-10-22T14:13:43.08Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAUwEYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T04:56:11.249Z",
+              "Title": "zHoMa.Entities.PhuMT",
+              "DocumentMoniker": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj",
+              "RelativeDocumentMoniker": "zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj",
+              "ToolTip": "C:\\Code\\FPTU\\PRN222_SE1905_FA26\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj",
+              "RelativeToolTip": "zHoMa.Entities.PhuMT\\zHoMa.Entities.PhuMT.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-22T14:13:37.635Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HoursePhuMtsController.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\HoursePhuMtsController.cs",
-              "RelativeDocumentMoniker": "zHoMa.MVCWebapp.PhuMT\\Controllers\\HoursePhuMtsController.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.MVCWebapp.PhuMT\\Controllers\\HoursePhuMtsController.cs",
-              "RelativeToolTip": "zHoMa.MVCWebapp.PhuMT\\Controllers\\HoursePhuMtsController.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAxwNgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T04:58:31.904Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ISystemUserAccountPhuMtService.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\xHoMa.Services.PhuMT\\IService\\ISystemUserAccountPhuMtService.cs",
-              "RelativeDocumentMoniker": "xHoMa.Services.PhuMT\\IService\\ISystemUserAccountPhuMtService.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\xHoMa.Services.PhuMT\\IService\\ISystemUserAccountPhuMtService.cs",
-              "RelativeToolTip": "xHoMa.Services.PhuMT\\IService\\ISystemUserAccountPhuMtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T04:52:10.985Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RTMSContext.cs",
-              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
-              "RelativeDocumentMoniker": "zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
-              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM01_PhuMT\\zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
-              "RelativeToolTip": "zHoMa.Repositories.PhuMT\\DBContext\\RTMSContext.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAkwHUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-22T04:19:20.629Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -200,15 +172,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",

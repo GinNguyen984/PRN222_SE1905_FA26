@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using zHoMa.Entities.PhuMT.Models;
+using zHoMa.MVCWebApp.PhuMT.Hubs;
 using zHoMa.Services.PhuMT.Interface;
 
 namespace zHoMa.MVCWebapp.PhuMT.Controllers
@@ -12,11 +14,16 @@ namespace zHoMa.MVCWebapp.PhuMT.Controllers
     {
         private readonly IHoursePhuMtService _hoursePhuMtService;
         private readonly IStablePhuMtService _stablePhuMtService;
+        private readonly IHubContext<RTMSHub> _hubContext;
 
         public HoursePhuMtsController(IHoursePhuMtService hoursePhuMtService, 
-                                      IStablePhuMtService stablePhuMtService) => 
-                                    (_hoursePhuMtService, _stablePhuMtService) = 
-                                    (hoursePhuMtService, stablePhuMtService);
+                                      IStablePhuMtService stablePhuMtService,
+                                      IHubContext<RTMSHub> hubContext)
+        {
+            _hoursePhuMtService = hoursePhuMtService;
+            _stablePhuMtService = stablePhuMtService;
+            _hubContext = hubContext;
+        }
 
         // GET / POST: HoursePhuMts
         public async Task<IActionResult> Index(string? Code, string? Name, decimal? Weight, string? WeightOp = ">=")
@@ -125,6 +132,7 @@ namespace zHoMa.MVCWebapp.PhuMT.Controllers
             if (ModelState.IsValid)
             {
                 await _hoursePhuMtService.Create(hoursePhuMt);
+                await _hubContext.Clients.All.SendAsync("Receiver_Create", hoursePhuMt.HoursePhuMtid);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -168,6 +176,7 @@ namespace zHoMa.MVCWebapp.PhuMT.Controllers
                 try
                 {
                     await _hoursePhuMtService.Update(hoursePhuMt);
+                    await _hubContext.Clients.All.SendAsync("Receiver_Update", hoursePhuMt.HoursePhuMtid);
                 }
                 catch (Exception)
                 {
@@ -215,10 +224,13 @@ namespace zHoMa.MVCWebapp.PhuMT.Controllers
             int targetId = id ?? HoursePhuMtid ?? 0;
             if (targetId > 0)
             {
-                await _hoursePhuMtService.Delete(targetId);
+                var result = await _hoursePhuMtService.Delete(targetId);
+                if (result)
+                {
+                    await _hubContext.Clients.All.SendAsync("Receiver_Delete", targetId);
+                }
             }
             return RedirectToAction(nameof(Index));
         }
     }
 }
-

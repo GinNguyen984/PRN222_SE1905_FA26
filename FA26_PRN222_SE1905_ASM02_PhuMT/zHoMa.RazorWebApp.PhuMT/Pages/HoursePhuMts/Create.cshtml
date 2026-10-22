@@ -1,0 +1,291 @@
+@page
+@model zHoMa.RazorWebApp.PhuMT.Pages_HoursePhuMts.CreateModel
+
+@{
+    ViewData["Title"] = "Register New Horse";
+}
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<style>
+    .form-card {
+        border: none;
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .form-card-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: #ffffff;
+        padding: 1.75rem 2rem;
+    }
+
+    .form-section-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        color: #64748b;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .form-section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e2e8f0;
+    }
+
+    .input-group-text {
+        background-color: #f8fafc;
+        border-color: #cbd5e1;
+        color: #64748b;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15);
+    }
+
+    .form-check-input:checked {
+        background-color: #10b981;
+        border-color: #10b981;
+    }
+
+    .btn-create {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        border: none;
+        color: #ffffff;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-create:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        color: #ffffff;
+    }
+
+    .status-box {
+        background-color: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        transition: all 0.2s ease;
+    }
+
+    .status-box.active-status {
+        background-color: #f0fdf4;
+        border-color: #86efac;
+    }
+</style>
+
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-page="/Index" class="text-decoration-none">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-page="./Index" class="text-decoration-none">Horse Management</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Register New Horse</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <div class="form-card">
+                <!-- Header -->
+                <div class="form-card-header">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center text-white" style="width: 52px; height: 52px; font-size: 1.6rem;">
+                            🏇
+                        </div>
+                        <div>
+                            <h3 class="mb-1 fw-bold text-white">Register New Horse</h3>
+                            <p class="mb-0 text-white-50 small">Fill in the details below to add a horse to the race tracking registry.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Content -->
+                <div class="card-body p-4 p-md-5">
+                    <form method="post" id="createHorseForm">
+                        @Html.AntiForgeryToken()
+
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                                    <div>
+                                        <strong>Submission Error:</strong> Please check the highlighted fields below.
+                                    </div>
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="mt-2 text-danger small"></div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <!-- Section: Identification & Lineage -->
+                        <div class="form-section-title">
+                            <i class="bi bi-card-text text-primary"></i> Basic Information
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <!-- Horse Name -->
+                            <div class="col-md-6">
+                                <label asp-for="HoursePhuMt.Name" class="form-label fw-semibold text-secondary small">
+                                    Horse Name <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-tag-fill"></i></span>
+                                    <input asp-for="HoursePhuMt.Name" class="form-control" placeholder="e.g. Thunderbolt, Shadowfax" required autocomplete="off" />
+                                </div>
+                                <span asp-validation-for="HoursePhuMt.Name" class="text-danger small mt-1 d-block"></span>
+                            </div>
+
+                            <!-- Pedigree / Breed -->
+                            <div class="col-md-6">
+                                <label asp-for="HoursePhuMt.Pedigree" class="form-label fw-semibold text-secondary small">
+                                    Pedigree / Bloodline
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-diagram-3-fill"></i></span>
+                                    <input asp-for="HoursePhuMt.Pedigree" class="form-control" list="pedigreeSuggestions" placeholder="e.g. Thoroughbred - Eclipse Line" autocomplete="off" />
+                                    <datalist id="pedigreeSuggestions">
+                                        <option value="Thoroughbred - Eclipse Line" />
+                                        <option value="Arabian - Kehilan" />
+                                        <option value="Quarter Horse - Dash For Cash" />
+                                        <option value="Thoroughbred - Northern Dancer" />
+                                        <option value="Standardbred - Hanover" />
+                                        <option value="Warmblood - Holsteiner" />
+                                        <option value="Friesian - Ster Predicate" />
+                                    </datalist>
+                                </div>
+                                <span asp-validation-for="HoursePhuMt.Pedigree" class="text-danger small mt-1 d-block"></span>
+                            </div>
+                        </div>
+
+                        <!-- Section: Physical Attributes -->
+                        <div class="form-section-title">
+                            <i class="bi bi-heart-pulse-fill text-danger"></i> Physical & Biological Details
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <!-- Weight -->
+                            <div class="col-md-6">
+                                <label asp-for="HoursePhuMt.Weight" class="form-label fw-semibold text-secondary small">
+                                    Weight (kg)
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-speedometer2"></i></span>
+                                    <input asp-for="HoursePhuMt.Weight" type="number" step="0.01" min="50" max="1500" class="form-control" placeholder="e.g. 485.50" />
+                                    <span class="input-group-text text-muted">kg</span>
+                                </div>
+                                <span asp-validation-for="HoursePhuMt.Weight" class="text-danger small mt-1 d-block"></span>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="col-md-6">
+                                <label asp-for="HoursePhuMt.DateOfBirth" class="form-label fw-semibold text-secondary small">
+                                    Date of Birth
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                                    <input asp-for="HoursePhuMt.DateOfBirth" type="date" class="form-control" />
+                                </div>
+                                <span asp-validation-for="HoursePhuMt.DateOfBirth" class="text-danger small mt-1 d-block"></span>
+                            </div>
+                        </div>
+
+                        <!-- Section: Status -->
+                        <div class="form-section-title">
+                            <i class="bi bi-toggle-on text-success"></i> Operational Status
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="status-box active-status" id="statusBoxContainer">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check form-switch mb-0 fs-4">
+                                            <input class="form-check-input" type="checkbox" role="switch" name="HoursePhuMt.IsActive" id="isActiveToggle" value="true" @(Model.HoursePhuMt?.IsActive ?? true ? "checked=\"checked\"" : "") />
+                                            <input type="hidden" name="HoursePhuMt.IsActive" value="false" />
+                                        </div>
+                                        <div>
+                                            <label class="form-check-label fw-semibold d-block mb-0 text-dark" for="isActiveToggle">
+                                                Active In Registry
+                                            </label>
+                                            <small class="text-muted" id="statusDescription">
+                                                The horse is in active service, fit for scheduled training and races.
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success px-3 py-2 rounded-pill" id="statusBadge">
+                                        <i class="bi bi-check-circle me-1"></i> Active
+                                    </span>
+                                </div>
+                            </div>
+                            <span asp-validation-for="HoursePhuMt.IsActive" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-4">
+                            <a asp-page="./Index" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                            <div class="d-flex gap-2">
+                                <button type="reset" class="btn btn-light px-3 py-2 rounded-pill text-muted fw-semibold">
+                                    <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
+                                </button>
+                                <button type="submit" class="btn btn-create px-4 py-2 rounded-pill fw-semibold shadow-sm">
+                                    <i class="bi bi-check2-circle me-1"></i> Save Horse
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('isActiveToggle');
+            const statusBox = document.getElementById('statusBoxContainer');
+            const statusBadge = document.getElementById('statusBadge');
+            const statusDesc = document.getElementById('statusDescription');
+
+            function updateStatusUI() {
+                if (toggle.checked) {
+                    statusBox.classList.add('active-status');
+                    statusBadge.className = 'badge bg-success px-3 py-2 rounded-pill';
+                    statusBadge.innerHTML = '<i class="bi bi-check-circle me-1"></i> Active';
+                    statusDesc.textContent = 'The horse is in active service, fit for scheduled training and races.';
+                } else {
+                    statusBox.classList.remove('active-status');
+                    statusBadge.className = 'badge bg-secondary px-3 py-2 rounded-pill';
+                    statusBadge.innerHTML = '<i class="bi bi-pause-circle me-1"></i> Inactive';
+                    statusDesc.textContent = 'The horse is currently inactive (rest, medical leave, or retired).';
+                }
+            }
+
+            toggle.addEventListener('change', updateStatusUI);
+            updateStatusUI();
+        });
+    </script>
+}

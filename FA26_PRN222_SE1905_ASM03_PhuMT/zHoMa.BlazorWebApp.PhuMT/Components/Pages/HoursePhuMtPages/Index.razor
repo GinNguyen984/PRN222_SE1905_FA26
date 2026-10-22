@@ -1,0 +1,524 @@
+@page "/hoursephumts"
+@rendermode InteractiveServer
+@using zHoMa.Entities.PhuMT.Models
+@using zHoMa.Services.PhuMT.Interface
+
+@inject IHoursePhuMtService hoursePhuMtService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Horse Roster & Management - RTMS PhuMT</PageTitle>
+
+<div class="container-fluid px-lg-4 py-4">
+    <!-- Top Bar: Title & Primary CTA -->
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+        <div>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-1 small text-muted">
+                    <li class="breadcrumb-item">
+                        <a href="" class="text-decoration-none">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Horse Management</li>
+                </ol>
+            </nav>
+            <h2 class="fw-bold mb-1 text-dark d-flex align-items-center gap-2">
+                <span>🏇 Horse Roster & Registry</span>
+            </h2>
+            <p class="text-muted small mb-0">Manage profile data, bloodlines, physical conditions, and race eligibility.</p>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <a href="hoursephumts/create" class="btn btn-primary-gradient px-4 py-2 rounded-pill fw-semibold d-inline-flex align-items-center gap-2">
+                <i class="bi bi-plus-lg fs-6"></i>
+                <span>Register New Horse</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Metric / KPI Summary Cards -->
+    <div class="row g-3 mb-4">
+        <!-- Total Horses (Primary) -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card metric-card bg-primary text-white p-3 border-0 shadow-sm rounded-4">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-white text-opacity-75 small fw-semibold text-uppercase">Total Horses</span>
+                        <h3 class="fw-bold mb-0 mt-1 text-white">@TotalCount</h3>
+                        <small class="text-white text-opacity-75">Registered in registry</small>
+                    </div>
+                    <div class="metric-icon-box bg-white bg-opacity-25 text-white">
+                        <i class="bi bi-collection-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Horses (Success) -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card metric-card bg-success text-white p-3 border-0 shadow-sm rounded-4">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-white text-opacity-75 small fw-semibold text-uppercase">Active & Ready</span>
+                        <h3 class="fw-bold mb-0 mt-1 text-white">@ActiveCount</h3>
+                        <small class="text-white small fw-medium">
+                            <i class="bi bi-check-circle me-1"></i>Eligible for racing
+                        </small>
+                    </div>
+                    <div class="metric-icon-box bg-white bg-opacity-25 text-white">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inactive Horses (Danger) -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card metric-card bg-danger text-white p-3 border-0 shadow-sm rounded-4">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-white text-opacity-75 small fw-semibold text-uppercase">Resting / Inactive</span>
+                        <h3 class="fw-bold mb-0 mt-1 text-white">@InactiveCount</h3>
+                        <small class="text-white text-opacity-75 small">Medical leave / retired</small>
+                    </div>
+                    <div class="metric-icon-box bg-white bg-opacity-25 text-white">
+                        <i class="bi bi-pause-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Average Weight (Info) -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card metric-card bg-info text-white p-3 border-0 shadow-sm rounded-4">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-white text-opacity-75 small fw-semibold text-uppercase">Average Weight</span>
+                        <h3 class="fw-bold mb-0 mt-1 text-white">@AvgWeight.ToString("N1") <span class="fs-6 fw-normal text-white text-opacity-75">kg</span></h3>
+                        <small class="text-white text-opacity-75 small">Physical condition avg</small>
+                    </div>
+                    <div class="metric-icon-box bg-white bg-opacity-25 text-white">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Filter Form Card -->
+    <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4 mb-4 bg-white" style="padding-bottom: 2rem !important;">
+        <div class="row align-items-start g-3">
+            <!-- Code (ID) -->
+            <div class="col-md-2">
+                <div class="form-group position-relative mb-0">
+                    <label class="control-label fw-semibold text-secondary small mb-1">Code (ID)</label>
+                    <input type="text" @bind="searchCode" class="form-control @(!string.IsNullOrEmpty(codeError) ? "is-invalid" : "")" placeholder="Search ID..." />
+                    @if (!string.IsNullOrEmpty(codeError))
+                    {
+                        <span class="text-danger small position-absolute" style="top: 100%; left: 0; margin-top: 4px; font-size: 0.75rem; font-weight: 500; white-space: nowrap; z-index: 10;">
+                            <i class="bi bi-exclamation-circle me-1"></i>@codeError
+                        </span>
+                    }
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div class="col-md-3">
+                <div class="form-group mb-0">
+                    <label class="control-label fw-semibold text-secondary small mb-1">Name</label>
+                    <input type="text" @bind="searchName" class="form-control" placeholder="Search Name..." />
+                </div>
+            </div>
+
+            <!-- Weight with Operator -->
+            <div class="col-md-4">
+                <div class="form-group mb-0">
+                    <label class="control-label fw-semibold text-secondary small mb-1">Weight (kg)</label>
+                    <div class="input-group">
+                        <select @bind="weightOp" class="form-select" style="max-width: 140px;">
+                            <option value="@(">=")">Lớn hơn (&gt;=)</option>
+                            <option value="@("<=")">Nhỏ hơn (&lt;=)</option>
+                            <option value="@(">")">Lớn hẳn (&gt;)</option>
+                            <option value="@("<")">Nhỏ hẳn (&lt;)</option>
+                            <option value="=">Bằng (=)</option>
+                        </select>
+                        <input type="number" step="0.01" @bind="searchWeight" class="form-control" placeholder="Số cân..." />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-md-3">
+                <div class="form-group mb-0">
+                    <label class="control-label small mb-1 d-none d-md-block opacity-0 user-select-none" style="visibility: hidden;">Action</label>
+                    <div class="d-flex align-items-center gap-2 flex-wrap flex-md-nowrap">
+                        <button type="button" @onclick="ApplyPrimaryFilters" class="btn btn-primary px-3 fw-semibold d-inline-flex align-items-center">
+                            <i class="bi bi-search me-1"></i>Search
+                        </button>
+                        <a href="hoursephumts/create" class="btn btn-success px-3 fw-semibold d-inline-flex align-items-center">
+                            <i class="bi bi-plus-lg me-1"></i>Create New
+                        </a>
+                        @if (HasActiveFilters)
+                        {
+                            <button type="button" @onclick="ResetFilters" class="btn btn-outline-secondary px-3 d-inline-flex align-items-center" title="Reset filter">
+                                <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table Card -->
+    <div class="table-card shadow-sm rounded-4">
+        <!-- Filter & Search Toolbar -->
+        <div class="p-3 p-md-4 border-bottom bg-white">
+            <div class="row g-3 align-items-center justify-content-between">
+                <!-- Search Box -->
+                <div class="col-md-5 col-lg-4">
+                    <div class="input-group search-input-group">
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="bi bi-search text-muted"></i>
+                        </span>
+                        <input type="text" class="form-control bg-light border-start-0 ps-0" placeholder="Search by name, pedigree..." 
+                               value="@quickSearch" @oninput="OnQuickSearchInput" autocomplete="off" />
+                        @if (!string.IsNullOrEmpty(quickSearch))
+                        {
+                            <button class="btn btn-light border border-start-0 text-muted" type="button" @onclick="ClearQuickSearch" title="Clear search">
+                                <i class="bi bi-x-circle"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <!-- Filters & Controls -->
+                <div class="col-md-7 col-lg-8">
+                    <div class="d-flex flex-wrap align-items-center justify-content-md-end gap-2">
+                        <!-- Status Filter -->
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="small text-muted fw-semibold">Status:</span>
+                            <select class="form-select form-select-sm" style="width: auto;" value="@statusFilter" @onchange="OnStatusFilterChanged">
+                                <option value="all">All Statuses (@TotalCount)</option>
+                                <option value="active">Active (@ActiveCount)</option>
+                                <option value="inactive">Inactive (@InactiveCount)</option>
+                            </select>
+                        </div>
+
+                        <!-- Counter Badge -->
+                        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill small">
+                            Showing <span class="fw-bold text-dark">@filteredHorses.Count</span> of @TotalCount horses
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Responsive -->
+        <div class="table-responsive">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">ID</th>
+                        <th>Horse Profile</th>
+                        <th>Pedigree & Bloodline</th>
+                        <th>Weight</th>
+                        <th>Date of Birth</th>
+                        <th>Status</th>
+                        <th class="text-end" style="width: 160px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (isLoading)
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="text-muted mt-2 small">Loading horses from database...</div>
+                            </td>
+                        </tr>
+                    }
+                    else if (filteredHorses.Any())
+                    {
+                        @foreach (var item in filteredHorses)
+                        {
+                            var isActive = item.IsActive == true;
+                            var initial = !string.IsNullOrWhiteSpace(item.Name) ? item.Name.Substring(0, 1).ToUpper() : "H";
+                            var age = item.DateOfBirth.HasValue
+                                ? (DateTime.Now.Year - item.DateOfBirth.Value.Year)
+                                : 0;
+
+                            <tr class="horse-row">
+                                <!-- ID -->
+                                <td>
+                                    <span class="badge bg-light text-muted border font-monospace">#@item.HoursePhuMtid.ToString("D2")</span>
+                                </td>
+
+                                <!-- Horse Profile -->
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="horse-avatar">
+                                            @initial
+                                        </div>
+                                        <div>
+                                            <a href="@($"hoursephumts/details?hoursephumtid={item.HoursePhuMtid}")" class="fw-bold text-decoration-none text-dark hover-primary d-block">
+                                                @item.Name
+                                            </a>
+                                            <small class="text-muted font-monospace">ID: @item.HoursePhuMtid</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Pedigree / Bloodline -->
+                                <td>
+                                    @if (!string.IsNullOrWhiteSpace(item.Pedigree))
+                                    {
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-diagram-3 text-primary opacity-75"></i>
+                                            <span class="fw-medium text-dark">@item.Pedigree</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted fst-italic small">Unspecified bloodline</span>
+                                    }
+                                </td>
+
+                                <!-- Weight -->
+                                <td>
+                                    @if (item.Weight.HasValue)
+                                    {
+                                        <div class="d-flex align-items-baseline gap-1">
+                                            <span class="fw-bold text-dark">@item.Weight.Value.ToString("N2")</span>
+                                            <span class="text-muted small">kg</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small">--</span>
+                                    }
+                                </td>
+
+                                <!-- Date of Birth & Age -->
+                                <td>
+                                    @if (item.DateOfBirth.HasValue)
+                                    {
+                                        <div class="text-dark fw-medium">
+                                            <i class="bi bi-calendar-event me-1 text-muted small"></i>
+                                            @item.DateOfBirth.Value.ToString("dd MMM yyyy")
+                                        </div>
+                                        @if (age > 0)
+                                        {
+                                            <small class="text-muted">(@age yrs old)</small>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small">--</span>
+                                    }
+                                </td>
+
+                                <!-- Status Badge -->
+                                <td>
+                                    @if (isActive)
+                                    {
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 fw-semibold d-inline-flex align-items-center">
+                                            <span class="status-pulse active"></span> Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill px-3 py-1 fw-semibold d-inline-flex align-items-center">
+                                            <span class="status-pulse inactive"></span> Inactive
+                                        </span>
+                                    }
+                                </td>
+
+                                <!-- Actions -->
+                                <td class="text-end">
+                                    <div class="btn-group gap-1" role="group">
+                                        <a href="@($"hoursephumts/edit?hoursephumtid={item.HoursePhuMtid}")" class="btn btn-action btn-outline-primary" title="Edit Horse">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a href="@($"hoursephumts/details?hoursephumtid={item.HoursePhuMtid}")" class="btn btn-action btn-outline-info" title="View Details">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="@($"hoursephumts/delete?hoursephumtid={item.HoursePhuMtid}")" class="btn btn-action btn-outline-danger" title="Delete Horse">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-5">
+                                <div class="py-4">
+                                    <i class="bi bi-search fs-1 text-muted mb-2 d-block"></i>
+                                    <h6 class="fw-bold text-dark mb-1">No matching horses found</h6>
+                                    <p class="text-muted small mb-3">Try adjusting your search criteria or resetting filters.</p>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm px-3 rounded-pill" @onclick="ResetFilters">
+                                        <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Filters
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<HoursePhuMt> allHorses = new();
+    private List<HoursePhuMt> filteredHorses = new();
+    private bool isLoading = true;
+
+    // Primary Filters
+    private string? searchCode;
+    private string? searchName;
+    private string? searchWeight;
+    private string weightOp = ">=";
+    private string? codeError;
+
+    // Quick Toolbar Filters
+    private string quickSearch = "";
+    private string statusFilter = "all";
+
+    // Metrics
+    private int TotalCount => allHorses.Count;
+    private int ActiveCount => allHorses.Count(h => h.IsActive == true);
+    private int InactiveCount => TotalCount - ActiveCount;
+    private decimal AvgWeight => (allHorses.Any(h => h.Weight.HasValue))
+        ? allHorses.Where(h => h.Weight.HasValue).Average(h => h.Weight!.Value)
+        : 0m;
+
+    private bool HasActiveFilters =>
+        !string.IsNullOrEmpty(searchCode) ||
+        !string.IsNullOrEmpty(searchName) ||
+        !string.IsNullOrEmpty(searchWeight) ||
+        !string.IsNullOrEmpty(quickSearch) ||
+        statusFilter != "all";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadHorsesAsync();
+    }
+
+    private async Task LoadHorsesAsync()
+    {
+        isLoading = true;
+        try
+        {
+            var data = await hoursePhuMtService.GetAllAsync();
+            allHorses = data ?? new List<HoursePhuMt>();
+            ApplyAllFilters();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ApplyPrimaryFilters()
+    {
+        codeError = null;
+        if (!string.IsNullOrWhiteSpace(searchCode))
+        {
+            if (!int.TryParse(searchCode.Trim(), out _))
+            {
+                codeError = "Mã ID chỉ được nhập số!";
+                return;
+            }
+        }
+        ApplyAllFilters();
+    }
+
+    private void OnQuickSearchInput(ChangeEventArgs e)
+    {
+        quickSearch = e.Value?.ToString() ?? "";
+        ApplyAllFilters();
+    }
+
+    private void ClearQuickSearch()
+    {
+        quickSearch = "";
+        ApplyAllFilters();
+    }
+
+    private void OnStatusFilterChanged(ChangeEventArgs e)
+    {
+        statusFilter = e.Value?.ToString() ?? "all";
+        ApplyAllFilters();
+    }
+
+    private void ResetFilters()
+    {
+        searchCode = null;
+        searchName = null;
+        searchWeight = null;
+        weightOp = ">=";
+        codeError = null;
+        quickSearch = "";
+        statusFilter = "all";
+        ApplyAllFilters();
+    }
+
+    private void ApplyAllFilters()
+    {
+        IEnumerable<HoursePhuMt> query = allHorses;
+
+        // Code (ID)
+        if (!string.IsNullOrWhiteSpace(searchCode) && int.TryParse(searchCode.Trim(), out int idVal))
+        {
+            query = query.Where(h => h.HoursePhuMtid == idVal);
+        }
+
+        // Name
+        if (!string.IsNullOrWhiteSpace(searchName))
+        {
+            var term = searchName.Trim().ToLower();
+            query = query.Where(h => h.Name != null && h.Name.ToLower().Contains(term));
+        }
+
+        // Weight
+        if (!string.IsNullOrWhiteSpace(searchWeight) && decimal.TryParse(searchWeight.Trim(), out decimal wVal))
+        {
+            query = weightOp switch
+            {
+                ">" => query.Where(h => h.Weight.HasValue && h.Weight.Value > wVal),
+                "<" => query.Where(h => h.Weight.HasValue && h.Weight.Value < wVal),
+                "=" => query.Where(h => h.Weight.HasValue && h.Weight.Value == wVal),
+                "<=" => query.Where(h => h.Weight.HasValue && h.Weight.Value <= wVal),
+                _ => query.Where(h => h.Weight.HasValue && h.Weight.Value >= wVal)
+            };
+        }
+
+        // Quick Search (Name or Pedigree)
+        if (!string.IsNullOrWhiteSpace(quickSearch))
+        {
+            var q = quickSearch.Trim().ToLower();
+            query = query.Where(h =>
+                (h.Name != null && h.Name.ToLower().Contains(q)) ||
+                (h.Pedigree != null && h.Pedigree.ToLower().Contains(q)));
+        }
+
+        // Status Filter
+        if (statusFilter == "active")
+        {
+            query = query.Where(h => h.IsActive == true);
+        }
+        else if (statusFilter == "inactive")
+        {
+            query = query.Where(h => h.IsActive != true);
+        }
+
+        filteredHorses = query.ToList();
+    }
+}

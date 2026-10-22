@@ -365,7 +365,7 @@
                         <th class="text-end" style="width: 160px;">Actions</th>
                     </tr>
                 </thead>
-                // cai bang bao doi
+                @* cai bang bao doi *@
                 <tbody id="horseTableBody">
                     @if (Model != null && Model.Any())
                     {
@@ -755,15 +755,30 @@
     </script>
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script>
-            const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/RTMSHub")
-    .build();
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/RTMSHub")
+            .withAutomaticReconnect()
+            .build();
 
-connection.start().catch(err => console.error(err.toString()));
+        connection.on("Receiver_Delete", function (id) {
+            console.log("Real-time delete received for horse #", id);
+            window.location.reload();
+        });
 
-connection.on("Receiver_Delete", function (id) {
-    //alert($(`#${TermDepositSlipId}`).value);
-    $('#horseTableBody').find(`tr[id='${id}']`).remove();
-});
+        connection.on("Receiver_Create", function (id) {
+            console.log("Real-time new horse registered #", id);
+            window.location.reload();
+        });
+
+        connection.on("Receiver_Update", function (id) {
+            console.log("Real-time horse updated #", id);
+            window.location.reload();
+        });
+
+        connection.start()
+            .then(function () {
+                console.log("Connected to /RTMSHub successfully");
+            })
+            .catch(err => console.error("SignalR Connection Error: ", err.toString()));
     </script>
 }

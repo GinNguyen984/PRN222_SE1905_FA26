@@ -74,19 +74,20 @@
                     </div>
 
                     <!-- Confirmation Form -->
-                    <form asp-action="Delete" asp-route-id="@Model.HoursePhuMtid" method="post" id="deleteForm" class="mt-4 pt-3 border-top d-flex align-items-center justify-content-between flex-wrap gap-2">
+                    <form asp-action="Delete" asp-route-id="@Model?.HoursePhuMtid" method="post" id="deleteForm" class="mt-4 pt-3 border-top d-flex align-items-center justify-content-between flex-wrap gap-2">
                         @Html.AntiForgeryToken()
-                        <input type="hidden" name="id" value="@Model.HoursePhuMtid" />
+                        <input type="hidden" name="id" value="@Model?.HoursePhuMtid" />
                         <input type="hidden" asp-for="HoursePhuMtid" />
-                        <input type="button" value="Delete" class="btn btn-success" onclick="document.getElementById('deleteForm').submit();" />
-                        <input type="button" id="btnDeleteBySignalR" value="Delete by SignalR" class="btn btn-success" />
 
                         <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-semibold">
                             <i class="bi bi-arrow-left me-1"></i> Cancel
                         </a>
-                        <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm">
-                            <i class="bi bi-trash3-fill me-1"></i> Confirm Delete
-                        </button>
+                        <div class="d-flex gap-2">
+                            <input type="button" id="btnDeleteBySignalR" value="Delete by SignalR" class="btn btn-warning px-3 py-2 rounded-pill fw-semibold shadow-sm" />
+                            <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm">
+                                <i class="bi bi-trash3-fill me-1"></i> Confirm Delete
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -97,44 +98,38 @@
 @section Scripts {
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script>
+        const targetHorseId = parseInt('@(Model?.HoursePhuMtid ?? 0)');
+
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/RTMSHub")
             .withAutomaticReconnect()
             .build();
 
-        connection.start().then(function () {
-            console.log("Connected to /RTMSHub successfully");
-        }).catch(err => console.error("Error connecting to /RTMSHub:", err.toString()));
-
-        // Listen for Receiver_Delete broadcast
+        // 1. Listen for Receiver_Delete broadcast (if another admin deletes this horse)
         connection.on("Receiver_Delete", function (id) {
-            if (id == @Model.HoursePhuMtid) {
+            if (parseInt(id) === targetHorseId) {
+                alert("This horse has been deleted.");
                 window.location.href = '@Url.Action("Index", "HoursePhuMts")';
             }
         });
 
-        // 1. Regular Delete button click
-        const btnDelete = document.querySelector('input[value="Delete"]');
-        if (btnDelete) {
-            btnDelete.addEventListener("click", function () {
-                document.getElementById("deleteForm").submit();
-            });
-        }
+        connection.start().then(function () {
+            console.log("Connected to /RTMSHub successfully");
+        }).catch(err => console.error("Error connecting to /RTMSHub:", err.toString()));
 
-        // 2. Delete by SignalR button click
+        // 2. Delete by SignalR button handler
         const btnSignalR = document.getElementById("btnDeleteBySignalR");
         if (btnSignalR) {
             btnSignalR.addEventListener("click", function (event) {
                 event.preventDefault();
-                const id = parseInt('@Model.HoursePhuMtid');
 
                 function triggerSignalRDelete() {
-                    connection.invoke("HubDelete_IHoursePhuMt", id)
+                    connection.invoke("HubDelete_IHoursePhuMt", targetHorseId)
                         .then(function () {
                             window.location.href = '@Url.Action("Index", "HoursePhuMts")';
                         })
                         .catch(function (err) {
-                            console.error("SignalR delete error:", err);
+                            console.error("SignalR delete error, falling back to form submit:", err);
                             document.getElementById("deleteForm").submit();
                         });
                 }
@@ -150,4 +145,3 @@
         }
     </script>
 }
-                            
