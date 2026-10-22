@@ -1,0 +1,59 @@
+@* @page "/racephuocdhs/create"
+@using Microsoft.EntityFrameworkCore
+@using RTMS.Entities.PhuocDH.Models
+@inject IDbContextFactory<RTMS.Repositories.PhuocDH.Models.RTMSContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>RacePhuocDh</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="RacePhuocDh" OnValidSubmit="AddRacePhuocDh" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="racename" class="form-label">RaceName:</label> 
+                <InputText id="racename" @bind-Value="RacePhuocDh.RaceName" class="form-control" /> 
+                <ValidationMessage For="() => RacePhuocDh.RaceName" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="prizepool" class="form-label">PrizePool:</label> 
+                <InputNumber id="prizepool" @bind-Value="RacePhuocDh.PrizePool" class="form-control" /> 
+                <ValidationMessage For="() => RacePhuocDh.PrizePool" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="racedate" class="form-label">RaceDate:</label> 
+                <InputDate id="racedate" @bind-Value="RacePhuocDh.RaceDate" class="form-control" /> 
+                <ValidationMessage For="() => RacePhuocDh.RaceDate" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="isfinished" class="form-label">IsFinished:</label> 
+                <InputCheckbox id="isfinished" @bind-Value="RacePhuocDh.IsFinished" class="form-check-input" /> 
+                <ValidationMessage For="() => RacePhuocDh.IsFinished" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/racephuocdhs">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private RacePhuocDh RacePhuocDh { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddRacePhuocDh()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.RacePhuocDhs.Add(RacePhuocDh);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/racephuocdhs");
+    }
+} *@

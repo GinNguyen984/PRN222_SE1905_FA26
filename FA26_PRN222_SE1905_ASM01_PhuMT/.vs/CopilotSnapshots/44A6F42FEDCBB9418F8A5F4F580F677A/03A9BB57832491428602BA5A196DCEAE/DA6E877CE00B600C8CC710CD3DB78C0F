@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using zHoMa.Entities.PhuMT.Models;
+using zHoMa.Repositories.PhuMT.Base;
+
+namespace zHoMa.Repositories.PhuMT
+{
+    public class StablePhuMtRepository : GenericRepository<StablePhuMt>
+    {
+        public StablePhuMtRepository() => _context ??= new RTMSContext();
+        public StablePhuMtRepository(RTMSContext context) => _context = context;
+
+    }
+}

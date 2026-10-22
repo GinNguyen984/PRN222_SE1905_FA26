@@ -1,0 +1,40 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using zHoMa.Entities.PhuMT.Models;
+using zHoMa.Repositories.PhuMT.Base;
+
+namespace zHoMa.Repositories.PhuMT
+{
+    public class StablePhuMtRepository : GenericRepository<StablePhuMt>
+    {
+        public StablePhuMtRepository()
+        {
+            if (_context == null)
+            {
+                _context = new RTMSContext();
+            }
+        }
+
+        public StablePhuMtRepository(RTMSContext context)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        public async Task<List<StablePhuMt>> SearchAsync(string code, string location, string StableCode)
+        {
+            return await _context.StablePhuMts
+                .Where(s =>
+                    (string.IsNullOrEmpty(code) || (s.TaskType != null && s.TaskType.Contains(code)) || (s.StableCode != null && s.StableCode.Contains(code))) &&
+                    (string.IsNullOrEmpty(location) || (s.Location != null && s.Location.Contains(location))) &&
+                    (string.IsNullOrEmpty(StableCode) || (s.StableCode != null && s.StableCode.Contains(StableCode)))
+                )
+                .ToListAsync();
+        }
+
+    }
+}
+

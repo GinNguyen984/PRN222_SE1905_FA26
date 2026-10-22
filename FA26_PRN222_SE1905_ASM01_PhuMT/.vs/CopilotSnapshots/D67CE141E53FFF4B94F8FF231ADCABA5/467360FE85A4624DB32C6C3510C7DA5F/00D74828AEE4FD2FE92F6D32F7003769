@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using zHoMa.Services.PhuMT.Interface;
+
+namespace zHoMa.Services.PhuMT.Service
+{
+    public class SystemUserAccountService : ISystemUserAccountPhuMtService
+    {
+        private readonly ISystemUserAccountPhuMtService _repository;
+        public SystemUserAccountService() => _repository ??= new SystemUserAccountService();
+        public async Task<ISystemUserAccountPhuMtService> GetUserAccount(string username, string password)
+        {
+            try
+            {
+                return await _repository.GetUserAccount(username, password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in GetUserAccount" + ex.Message);
+            }
+        }
+    }
+}   

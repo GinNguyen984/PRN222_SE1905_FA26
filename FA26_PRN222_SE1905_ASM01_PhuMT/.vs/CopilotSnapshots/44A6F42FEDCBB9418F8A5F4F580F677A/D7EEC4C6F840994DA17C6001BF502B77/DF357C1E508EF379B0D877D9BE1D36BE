@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using zHoMa.Entities.PhuMT.Models;
+
+namespace zHoMa.Services.PhuMT
+{
+    public class HoursePhuMtService : IHoursePhuMtService   
+    {
+        private readonly IHoursePhuMtService _repository;
+        public HoursePhuMtService() => _repository ??= new HoursePhuMtService();
+
+        public async Task<List<HoursePhuMt>> GetAllAsync()
+        {
+            try
+            {
+                return await _repository.GetAllAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in GetAllAsync", ex);
+            }
+        }
+    }
+}

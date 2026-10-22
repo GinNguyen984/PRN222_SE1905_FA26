@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-RTMS.WorkerService.PhuocDH-57628294-b05e-41d0-816d-2fe30ff3bafc</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\zHoMa.Entities.PhuMT\zHoMa.Entities.PhuMT.csproj" />
+    <ProjectReference Include="..\zHoMa.Services.PhuMT\zHoMa.Services.PhuMT.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.13" />
+  </ItemGroup>
+</Project>

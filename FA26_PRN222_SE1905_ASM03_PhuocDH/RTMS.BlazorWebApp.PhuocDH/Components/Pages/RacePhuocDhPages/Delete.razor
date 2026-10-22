@@ -1,0 +1,67 @@
+@page "/racephuocdhs/delete"
+@using Microsoft.EntityFrameworkCore
+@using RTMS.Entities.PhuocDH.Models
+@inject IDbContextFactory<RTMS.Repositories.PhuocDH.Models.RTMSContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>RacePhuocDh</h2>
+    <hr />
+    @if (racephuocdh is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">RaceName</dt>
+            <dd class="col-sm-10">@racephuocdh.RaceName</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">PrizePool</dt>
+            <dd class="col-sm-10">@racephuocdh.PrizePool</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">RaceDate</dt>
+            <dd class="col-sm-10">@racephuocdh.RaceDate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">IsFinished</dt>
+            <dd class="col-sm-10">@racephuocdh.IsFinished</dd>
+        </dl>
+        <EditForm method="post" Model="racephuocdh" OnValidSubmit="DeleteRacePhuocDh" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(racephuocdh is null)">Delete</button> |
+            <a href="/racephuocdhs">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private RacePhuocDh? racephuocdh;
+
+    [SupplyParameterFromQuery]
+    private int RacePhuocDhid { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        racephuocdh = await context.RacePhuocDhs.FirstOrDefaultAsync(m => m.RacePhuocDhid == RacePhuocDhid);
+
+        if (racephuocdh is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteRacePhuocDh()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.RacePhuocDhs.Remove(racephuocdh!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/racephuocdhs");
+    }
+}

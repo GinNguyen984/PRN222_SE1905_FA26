@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM04_PhuocDH\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B007F038-A482-45FC-8CA2-1DCB3B0886CA}|RTMS.WorkerService.PhuocDH\\RTMS.WorkerService.PhuocDH.csproj|d:\\backup\\cn7\\prn222\\fa26_prn222_se1905_asm04_phuocdh\\rtms.workerservice.phuocdh\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B007F038-A482-45FC-8CA2-1DCB3B0886CA}|RTMS.WorkerService.PhuocDH\\RTMS.WorkerService.PhuocDH.csproj|solutionrelative:rtms.workerservice.phuocdh\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Worker.cs",
+              "DocumentMoniker": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM04_PhuocDH\\RTMS.WorkerService.PhuocDH\\Worker.cs",
+              "RelativeDocumentMoniker": "RTMS.WorkerService.PhuocDH\\Worker.cs",
+              "ToolTip": "D:\\BackUp\\CN7\\PRN222\\FA26_PRN222_SE1905_ASM04_PhuocDH\\RTMS.WorkerService.PhuocDH\\Worker.cs",
+              "RelativeToolTip": "RTMS.WorkerService.PhuocDH\\Worker.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T09:49:42.378Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

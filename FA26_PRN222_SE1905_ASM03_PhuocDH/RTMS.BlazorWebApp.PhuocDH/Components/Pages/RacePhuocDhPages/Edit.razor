@@ -1,0 +1,104 @@
+@* @page "/racephuocdhs/edit"
+@using Microsoft.EntityFrameworkCore
+@using RTMS.Entities.PhuocDH.Models
+@inject IDbContextFactory<RTMS.Repositories.PhuocDH.Models.RTMSContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit</PageTitle>
+
+<h1>Edit</h1>
+
+<h2>RacePhuocDh</h2>
+<hr />
+@if (RacePhuocDh is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm method="post" Model="RacePhuocDh" OnValidSubmit="UpdateRacePhuocDh" FormName="edit" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary role="alert"/>
+                <input type="hidden" name="RacePhuocDh.RacePhuocDhid" value="@RacePhuocDh.RacePhuocDhid" />
+                <div class="mb-3">
+                    <label for="racename" class="form-label">RaceName:</label>
+                    <InputText id="racename" @bind-Value="RacePhuocDh.RaceName" class="form-control" />
+                    <ValidationMessage For="() => RacePhuocDh.RaceName" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="prizepool" class="form-label">PrizePool:</label>
+                    <InputNumber id="prizepool" @bind-Value="RacePhuocDh.PrizePool" class="form-control" />
+                    <ValidationMessage For="() => RacePhuocDh.PrizePool" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="racedate" class="form-label">RaceDate:</label>
+                    <InputDate id="racedate" @bind-Value="RacePhuocDh.RaceDate" class="form-control" />
+                    <ValidationMessage For="() => RacePhuocDh.RaceDate" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label for="isfinished" class="form-label">IsFinished:</label>
+                    <InputCheckbox id="isfinished" @bind-Value="RacePhuocDh.IsFinished" class="form-check-input" />
+                    <ValidationMessage For="() => RacePhuocDh.IsFinished" class="text-danger" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/racephuocdhs">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    private int RacePhuocDhid { get; set; }
+
+    [SupplyParameterFromForm]
+    private RacePhuocDh? RacePhuocDh { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        RacePhuocDh ??= await context.RacePhuocDhs.FirstOrDefaultAsync(m => m.RacePhuocDhid == RacePhuocDhid);
+
+        if (RacePhuocDh is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task UpdateRacePhuocDh()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Attach(RacePhuocDh!).State = EntityState.Modified;
+
+        try
+        {
+            await context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!RacePhuocDhExists(RacePhuocDh!.RacePhuocDhid))
+            {
+                NavigationManager.NavigateTo("notfound");
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        NavigationManager.NavigateTo("/racephuocdhs");
+    }
+
+    private bool RacePhuocDhExists(int racephuocdhid)
+    {
+        using var context = DbFactory.CreateDbContext();
+        return context.RacePhuocDhs.Any(e => e.RacePhuocDhid == racephuocdhid);
+    }
+} *@

@@ -1,0 +1,38 @@
+@page "/racephuocdhs"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using RTMS.Entities.PhuocDH.Models
+@using RTMS.Services.PhuocDH
+
+@inject IRacePhuocDhService racePhuocDhService
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="racephuocdhs/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="racePhuocDhs">
+    <PropertyColumn Property="racephuocdh => racephuocdh.RaceName" />
+    <PropertyColumn Property="racephuocdh => racephuocdh.PrizePool" />
+    <PropertyColumn Property="racephuocdh => racephuocdh.RaceDate" />
+    <PropertyColumn Property="racephuocdh => racephuocdh.IsFinished" />
+
+    <TemplateColumn Context="racephuocdh" Title="Actions">
+        <ChildContent Context="racephuocdh">
+            <a href="@($"racephuocdhs/edit?racephuocdhid={racephuocdh.RacePhuocDhid}")">Edit</a> |
+            <a href="@($"racephuocdhs/details?racephuocdhid={racephuocdh.RacePhuocDhid}")">Details</a> |
+            <a href="@($"racephuocdhs/delete?racephuocdhid={racephuocdh.RacePhuocDhid}")">Delete</a>
+        </ChildContent>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private IQueryable<RacePhuocDh> racePhuocDhs = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        racePhuocDhs = (await racePhuocDhService.GetAllAsync()).AsQueryable();
+    }
+}

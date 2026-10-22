@@ -1,0 +1,94 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "RTMSContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "IrregularWords": null,
+   "MinimumProductVersion": "2.6.1706",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PluralRules": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "zHoMa.Entities.PhuMT",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "SingularRules": null,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[HealthRecordToanLQ]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[HoursePhuMT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MetricTypeDuyLD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Performance_MetricDuyLD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RaceDH]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RacePhuocDH]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[stablePhuMT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[System.UserAccount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Traning_PlanBaoTLG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Trannin_SessionBaoTLG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TreatmentToanLQ]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false,
+   "UseTypedTvpParameters": true
+}

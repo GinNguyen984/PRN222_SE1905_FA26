@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RTMS.BlazorWebApp.PhuocDH/RTMS.BlazorWebApp.PhuocDH.csproj" />
+  <Project Path="RTMS.Entities.PhuocDH/RTMS.Entities.PhuocDH.csproj" />
+  <Project Path="RTMS.Repositories.PhuocDH/RTMS.Repositories.PhuocDH.csproj" />
+  <Project Path="RTMS.Services.PhuocDH/RTMS.Services.PhuocDH.csproj" />
+</Solution>

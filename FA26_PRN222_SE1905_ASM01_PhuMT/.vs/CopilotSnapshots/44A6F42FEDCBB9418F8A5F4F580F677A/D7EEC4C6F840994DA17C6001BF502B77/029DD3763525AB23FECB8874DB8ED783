@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using zHoMa.Entities.PhuMT.Models;
+using zHoMa.Repositories.PhuMT;
+
+namespace zHoMa.Services.PhuMT
+{
+    public class StablePhuMtService : IStablePhuMtService
+    {
+        private readonly StablePhuMtRepository _repository;
+
+        public StablePhuMt()=> _repository = new StablePhuMtRepository();   
+
+        public async Task<StablePhuMt> Create(StablePhuMt stablePhuMt)
+        {
+            try
+            {
+                return await Task.Run(() => _repository.Create(stablePhuMt));
+            }
+            catch (Exception ex) {
+                throw new Exception("Error retrieving cash deposits slip list: " + ex.Message, ex);
+            }
+        }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            try
+            {
+                var item = await this.GetByIdAsync(id);
+                if(item == null)
+                {
+                    throw new KeyNotFoundException("Error deleting cash deposits slip by ID not found");
+                }
+                return await Task.Run(() => _repository.RemoveAsync(item));
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Error deleting cash deposits slip by ID: " + ex.Message, ex);
+            }
+        }
+
+        public async Task<List<StablePhuMt>> GetAllAsync()
+        {
+            try
+            {
+                return await Task.Run(() => _repository.GetAll());
+            }
+            catch (Exception ex) { 
+                throw new Exception("Error retrieving cash deposits slip list: " + ex.Message, ex);
+            }
+        }
+
+        public Task<StablePhuMt> GetByIdAsync(Guid id)
+        {
+            try
+            {
+                return Task.Run(() => _repository.GetById(id));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error retrieving cash deposits slip list: " + ex.Message, ex);
+            }
+            
+        }
+
+        public async Task<List<StablePhuMt>> SearchAsync(string code, string location, string StableCode)
+        {
+            try
+            {
+                return await Task.Run(() => _repository.SearchAsync(code, location, StableCode));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error retrieving cash deposits slip list: " + ex.Message, ex);
+            }
+        }
+
+        public async Task<StablePhuMt> Update(StablePhuMt stablePhuMt)
+        {
+            try
+            {
+                return await Task.Run(() => _repository.Update(stablePhuMt));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error retrieving cash deposits slip list: " + ex.Message, ex);
+            }
+        }
+    }
+}

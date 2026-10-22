@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RTMS.Entities.PhuocDH/RTMS.Entities.PhuocDH.csproj" />
+  <Project Path="RTMS.MVCWebapp.PhuocDH/RTMS.MVCWebapp.PhuocDH.csproj" Id="15b8c8f6-6bb5-4e2f-9573-6546d8cac1c6" />
+  <Project Path="RTMS.Repositories.PhuocDH/RTMS.Repositories.PhuocDH.csproj" />
+  <Project Path="RTMS.Services.PhuocDH/RTMS.Services.PhuocDH.csproj" />
+</Solution>

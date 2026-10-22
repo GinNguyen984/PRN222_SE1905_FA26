@@ -1,0 +1,15 @@
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\bin\Debug\net8.0\RTMS.Entities.PhuocDH.deps.json
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\bin\Debug\net8.0\RTMS.Entities.PhuocDH.dll
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\bin\Debug\net8.0\RTMS.Entities.PhuocDH.pdb
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.csproj.AssemblyReference.cache
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.GeneratedMSBuildEditorConfig.editorconfig
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.AssemblyInfoInputs.cache
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.AssemblyInfo.cs
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.csproj.CoreCompileInputs.cache
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.dll
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\refint\RTMS.Entities.PhuocDH.dll
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\RTMS.Entities.PhuocDH.pdb
+C:\FA26\PRN222\FA26_PRN222_SE1905_ASM01_PhuocDH\RTMS.Entities.PhuocDH\obj\Debug\net8.0\ref\RTMS.Entities.PhuocDH.dll
+C:\Users\dangp\AppData\Local\Temp\claude\C--FA26-PRN222-FA26-PRN222-SE1905-ASM01-PhuocDH\bdbdec0a-baaa-432b-81bc-adf1b84883f2\scratchpad\buildcheck\RTMS.Entities.PhuocDH.deps.json
+C:\Users\dangp\AppData\Local\Temp\claude\C--FA26-PRN222-FA26-PRN222-SE1905-ASM01-PhuocDH\bdbdec0a-baaa-432b-81bc-adf1b84883f2\scratchpad\buildcheck\RTMS.Entities.PhuocDH.dll
+C:\Users\dangp\AppData\Local\Temp\claude\C--FA26-PRN222-FA26-PRN222-SE1905-ASM01-PhuocDH\bdbdec0a-baaa-432b-81bc-adf1b84883f2\scratchpad\buildcheck\RTMS.Entities.PhuocDH.pdb

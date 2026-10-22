@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="zHoMa.Entities.PhuMT/zHoMa.Entities.PhuMT.csproj" />
+  <Project Path="zHoMa.RazorWebApp.PhuMT/zHoMa.RazorWebApp.PhuMT.csproj" />
+  <Project Path="zHoMa.Repositories.PhuMT/zHoMa.Repositories.PhuMT.csproj" />
+  <Project Path="zHoMa.Services.PhuMT/zHoMa.Services.PhuMT.csproj" />
+</Solution>

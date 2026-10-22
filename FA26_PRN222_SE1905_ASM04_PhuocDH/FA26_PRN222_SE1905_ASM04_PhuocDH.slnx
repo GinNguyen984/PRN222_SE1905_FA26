@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RTMS.WorkerService.PhuocDH/RTMS.WorkerService.PhuocDH.csproj" Id="b007f038-a482-45fc-8ca2-1dcb3b0886ca" />
+  <Project Path="zHoMa.Entities.PhuMT/zHoMa.Entities.PhuMT.csproj" />
+  <Project Path="zHoMa.Repositories.PhuMT/zHoMa.Repositories.PhuMT.csproj" />
+  <Project Path="zHoMa.Services.PhuMT/zHoMa.Services.PhuMT.csproj" />
+</Solution>
